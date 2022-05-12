@@ -1,35 +1,29 @@
-var box = new ReconnectingWebSocket(location.protocol.replace("http","ws") + "//" + location.host + "/ws");
+const box = new ReconnectingWebSocket(location.protocol.replace("http","ws") + "//" + location.host + "/ws");
+const myPics = document.getElementById('myPics');
+const context = myPics.getContext('2d');
+
+let isDrawing = false;
+let x = 0;
+let y = 0;
+
 
 box.onmessage = function(message) {
-  var data = JSON.parse(message.data);
-  $("#chat-text").append("<div class='panel panel-default'><div class='panel-heading'>" + $('<span/>').text(data.handle).html() + "</div><div class='panel-body'>" + $('<span/>').text(data.text).html() + "</div></div>");
-  $("#chat-text").stop().animate({
-    scrollTop: $('#chat-text')[0].scrollHeight
-  }, 800);
+  let data = JSON.parse(message.data);
+  console.log(data);
+  context.beginPath();
+  context.strokeStyle = 'green';
+  context.lineWidth = 1;
+  context.moveTo(data.line[0], data.line[1]);
+  context.lineTo(data.line[2], data.line[3]);
+  context.stroke();
+  context.closePath();
 };
 
 box.onclose = function(){
     console.log('box closed');
     this.box = new WebSocket(box.url);
-
 };
 
-$("#input-form").on("submit", function(event) {
-  event.preventDefault();
-  var handle = $("#input-handle")[0].value;
-  var text   = $("#input-text")[0].value;
-  box.send(JSON.stringify({ handle: handle, text: text }));
-  $("#input-text")[0].value = "";
-});
-
-
-// 真のとき、マウスを動かすと線を描く
-let isDrawing = false;
-let x = 0;
-let y = 0;
-
-const myPics = document.getElementById('myPics');
-const context = myPics.getContext('2d');
 
 // event.offsetX, event.offsetY はキャンバスの縁からのオフセットの (x,y) です。
 
@@ -65,4 +59,5 @@ function drawLine(context, x1, y1, x2, y2) {
   context.lineTo(x2, y2);
   context.stroke();
   context.closePath();
+  box.send(JSON.stringify({ handle: "", line: [x1, y1, x2, y2] }));
 }
