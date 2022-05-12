@@ -8,5 +8,5 @@ require (
 	github.com/heroku/x v0.0.1
 	github.com/pkg/errors v0.8.1
 	github.com/sirupsen/logrus v1.4.2
-	golang.org/x/sys v0.0.0-20190624142023-c5567b49c5d0 // indirect
+	golang.org/x/sys v0.0.0-20220503163025-988cb79eb6c6 // indirect
 )
