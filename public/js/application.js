@@ -10,7 +10,6 @@ let y = 0;
 console.log(1);
 box.onmessage = function(message) {
   let data = JSON.parse(message.data);
-  console.log(data);
   context.beginPath();
   context.strokeStyle = 'green';
   context.lineWidth = 1;
