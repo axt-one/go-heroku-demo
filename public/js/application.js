@@ -11,7 +11,7 @@ let color = "#000000"
 console.log(1);
 box.onmessage = function(message) {
   let data = JSON.parse(message.data);
-  drawLine(context, data.color, radius, data.line);
+  drawLine(context, data.color, data.radius, data.line);
 };
 console.log(2);
 
