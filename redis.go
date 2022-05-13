@@ -24,15 +24,17 @@ var (
 func init() {
 	var err error
 	waitingMessage, err = json.Marshal(message{
-		Color: "black",
-		Line:  []int{0, 0, 0, 0},
+		Color:  "black",
+		Radius: 1,
+		Line:   []int{0, 0, 0, 0},
 	})
 	if err != nil {
 		panic(err)
 	}
 	availableMessage, err = json.Marshal(message{
-		Color: "black",
-		Line:  []int{0, 0, 0, 0},
+		Color:  "black",
+		Radius: 1,
+		Line:   []int{0, 0, 0, 0},
 	})
 	if err != nil {
 		panic(err)

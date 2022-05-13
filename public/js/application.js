@@ -11,7 +11,7 @@ let color = "#000000"
 console.log(1);
 box.onmessage = function(message) {
   let data = JSON.parse(message.data);
-  drawLine(context, data.color, data.line);
+  drawLine(context, data.color, radius, data.line);
 };
 console.log(2);
 
@@ -33,7 +33,11 @@ myPics.addEventListener('mousedown', e => {
 myPics.addEventListener('mousemove', e => {
   if (isDrawing === true) {
     color = document.getElementById("color_input").value;
-    box.send(JSON.stringify({ color: color, line: [x, y, e.offsetX, e.offsetY] }));
+    radius = document.getElementById("radius").value;
+    drawLine(context, color, radius, [x, y, e.offsetX, e.offsetY]);
+    box.send(JSON.stringify({ color: color,
+                              radius: radius, 
+                              line: [x, y, e.offsetX, e.offsetY] }));
     x = e.offsetX;
     y = e.offsetY;
   }
@@ -47,10 +51,12 @@ window.addEventListener('mouseup', e => {
   }
 });
 
-function drawLine(context, color, coord) {
+function drawLine(context, color, radius, coord) {
   context.beginPath();
   context.strokeStyle = color;
-  context.lineWidth = 1;
+  context.lineWidth = radius;
+  context.lineJoin = "round";
+  context.lineCap = "round";
   context.moveTo(coord[0], coord[1]);
   context.lineTo(coord[2], coord[3]);
   context.stroke();

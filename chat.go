@@ -19,8 +19,9 @@ var (
 
 // message sent to us by the javascript client
 type message struct {
-	Color string `json:"color"`
-	Line  []int  `json:"line"`
+	Color  string `json:"color"`
+	Radius int    `json:"radius"`
+	Line   []int  `json:"line"`
 }
 
 // validateMessage so that we know it's valid JSON and contains a Handle and

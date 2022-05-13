@@ -12,6 +12,5 @@ canvas {
 
 .color_input {
   display: block;
-  flex-direction: column;
   margin: auto;
 }
