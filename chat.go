@@ -34,7 +34,7 @@ func validateMessage(data []byte) (message, error) {
 	}
 
 	if msg.Color == "" && len(msg.Line) == 0 {
-		return msg, errors.New("Message has no Handle or Text")
+		return msg, errors.New("Message has no Color or Line")
 	}
 
 	return msg, nil

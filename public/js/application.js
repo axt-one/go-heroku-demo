@@ -34,6 +34,7 @@ myPics.addEventListener('mousemove', e => {
   if (isDrawing === true) {
     color = document.getElementById("color_input").value;
     radius = document.getElementById("radius").value;
+    radius = Number(radius);
     drawLine(context, color, radius, [x, y, e.offsetX, e.offsetY]);
     box.send(JSON.stringify({ color: color,
                               radius: radius, 
