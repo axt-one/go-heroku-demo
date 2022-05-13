@@ -19,8 +19,8 @@ var (
 
 // message sent to us by the javascript client
 type message struct {
-	Handle string `json:"handle"`
-	Line   []int  `json:"line"`
+	Color string `json:"color"`
+	Line  []int  `json:"line"`
 }
 
 // validateMessage so that we know it's valid JSON and contains a Handle and
@@ -32,7 +32,7 @@ func validateMessage(data []byte) (message, error) {
 		return msg, errors.Wrap(err, "Unmarshaling message")
 	}
 
-	if msg.Handle == "" && len(msg.Line) == 0 {
+	if msg.Color == "" && len(msg.Line) == 0 {
 		return msg, errors.New("Message has no Handle or Text")
 	}
 

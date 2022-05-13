@@ -10,19 +10,13 @@ let y = 0;
 console.log(1);
 box.onmessage = function(message) {
   let data = JSON.parse(message.data);
-  context.beginPath();
-  context.strokeStyle = 'green';
-  context.lineWidth = 1;
-  context.moveTo(data.line[0], data.line[1]);
-  context.lineTo(data.line[2], data.line[3]);
-  context.stroke();
-  context.closePath();
+  drawLine(context, data.color, data.line);
 };
 console.log(2);
 
 box.onclose = function(){
-    console.log('box closed');
-    this.box = new WebSocket(box.url);
+  console.log('box closed');
+  this.box = new WebSocket(box.url);
 };
 console.log(3)
 
@@ -45,20 +39,19 @@ myPics.addEventListener('mousemove', e => {
 
 window.addEventListener('mouseup', e => {
   if (isDrawing === true) {
-    drawLine(context, x, y, e.offsetX, e.offsetY);
+    box.send(JSON.stringify({ color: "green", line: [x1, y1, x2, y2] }));
     x = 0;
     y = 0;
     isDrawing = false;
   }
 });
 
-function drawLine(context, x1, y1, x2, y2) {
+function drawLine(context, color, coord) {
   context.beginPath();
-  context.strokeStyle = 'black';
+  context.strokeStyle = color;
   context.lineWidth = 1;
-  context.moveTo(x1, y1);
-  context.lineTo(x2, y2);
+  context.moveTo(coord[0], coord[1]);
+  context.lineTo(coord[2], coord[3]);
   context.stroke();
   context.closePath();
-  box.send(JSON.stringify({ handle: "", line: [x1, y1, x2, y2] }));
 }
