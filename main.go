@@ -11,7 +11,7 @@ import (
 
 var (
 	waitTimeout = time.Minute * 10
-	log         = logrus.WithField("cmd", "oekaki-online")
+	log         = logrus.WithField("cmd", "go-heroku-demo")
 	rr          redisReceiver
 	rw          redisWriter
 )
