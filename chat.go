@@ -20,7 +20,7 @@ var (
 // message sent to us by the javascript client
 type message struct {
 	Handle string `json:"handle"`
-	Text   string `json:"text"`
+	Text   string `json:"line"`
 }
 
 // validateMessage so that we know it's valid JSON and contains a Handle and
