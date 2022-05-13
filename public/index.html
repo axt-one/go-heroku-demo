@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Go Websocket Chat Demo</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-    <link href="css/application.css" rel="stylesheet" media="screen">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  </head>
-  <body>
-    <div class="container">
-      <div class="jumbotron">
-        <h1>Oekaki Online</h1>
-        <hr />
-        <p>This is a Go WebSocket Oekaki Demo.</p>
-      </div>
-      <canvas id="myPics" width="560" height="360" style="border: 1px solid"></canvas>
-      <label>color: <input type="color" name="color_input" id="color_input" value="#99ff99"></label>
-      <label>radius: <input type="range" name="radius" id="radius" min="1" max="10"></label>
-    </div>
 
-    <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
-    <script type="text/javascript" src="js/reconnecting-websocket.min.js"></script>
-    <script type="text/javascript" src="js/application.js"></script>
-  </body>
+<head>
+  <title>Oekaki Online</title>
+  <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+  <link href="css/application.css" rel="stylesheet" media="screen">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+  <div class="container">
+    <div class="jumbotron">
+      <h1>Oekaki Online</h1>
+      <hr />
+      <p>This is a Go WebSocket Oekaki Demo.</p>
+    </div>
+    <canvas id="myPics" width="560" height="360" style="border: 1px solid"></canvas>
+    <label>color: <input type="color" name="color_input" id="color_input" value="#99ff99"></label>
+    <label>radius: <input type="range" name="radius" id="radius" min="1" max="10"></label>
+  </div>
+
+  <script type="text/javascript" src="js/jquery-2.0.3.min.js"></script>
+  <script type="text/javascript" src="js/reconnecting-websocket.min.js"></script>
+  <script type="text/javascript" src="js/application.js"></script>
+</body>
+
 </html>
