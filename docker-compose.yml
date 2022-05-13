@@ -2,7 +2,7 @@ version: '2'
 
 services:
   app:
-    command: oekaki-online
+    command: go-heroku-demo
     build: .
     environment:
       PORT: '5000'
