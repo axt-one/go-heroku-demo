@@ -1,14 +1,14 @@
 {
-  "name": "Go Websocket Chat Demo",
-  "description": "Go websocket chat demo application.",
+  "name": "Oekaki Online",
+  "description": "Online oekaki application.",
   "keywords": [
     "streaming",
     "redis",
     "go",
     "websocket"
   ],
-  "website": "http://github.com/heroku-examples/go-websocket-chat-demo",
-  "repository": "http://github.com/heroku-examples/go-websocket-chat-demol",
+  "website": "http://github.com/axt-one/go-heroku-demo",
+  "repository": "http://github.com/axt-one/go-heroku-demo",
   "addons": [
     "heroku-redis"
   ]

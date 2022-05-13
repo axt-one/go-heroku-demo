@@ -1,4 +1,4 @@
-module github.com/heroku-examples/go-websocket-chat-demo
+module github.com/axt-one/go-heroku-demo
 
 go 1.12
 

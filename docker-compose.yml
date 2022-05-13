@@ -2,7 +2,7 @@ version: '2'
 
 services:
   app:
-    command: go-websocket-chat-demo
+    command: oekaki-online
     build: .
     environment:
       PORT: '5000'
