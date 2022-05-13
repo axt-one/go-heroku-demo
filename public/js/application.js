@@ -6,6 +6,7 @@ console.log(0);
 let isDrawing = false;
 let x = 0;
 let y = 0;
+let color = "#000000"
 
 console.log(1);
 box.onmessage = function(message) {
@@ -31,7 +32,8 @@ myPics.addEventListener('mousedown', e => {
 
 myPics.addEventListener('mousemove', e => {
   if (isDrawing === true) {
-    box.send(JSON.stringify({ color: "green", line: [x, y, e.offsetX, e.offsetY] }));
+    color = document.getElementById("color_input").value;
+    box.send(JSON.stringify({ color: color, line: [x, y, e.offsetX, e.offsetY] }));
     x = e.offsetX;
     y = e.offsetY;
   }
