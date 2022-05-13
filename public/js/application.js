@@ -31,7 +31,7 @@ myPics.addEventListener('mousedown', e => {
 
 myPics.addEventListener('mousemove', e => {
   if (isDrawing === true) {
-    drawLine(context, x, y, e.offsetX, e.offsetY);
+    box.send(JSON.stringify({ color: "green", line: [x, y, e.offsetX, e.offsetY] }));
     x = e.offsetX;
     y = e.offsetY;
   }
@@ -39,7 +39,6 @@ myPics.addEventListener('mousemove', e => {
 
 window.addEventListener('mouseup', e => {
   if (isDrawing === true) {
-    box.send(JSON.stringify({ color: "green", line: [x1, y1, x2, y2] }));
     x = 0;
     y = 0;
     isDrawing = false;
