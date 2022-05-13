@@ -2,11 +2,12 @@ const box = new ReconnectingWebSocket(location.protocol.replace("http","ws") + "
 const myPics = document.getElementById('myPics');
 const context = myPics.getContext('2d');
 
+console.log(0);
 let isDrawing = false;
 let x = 0;
 let y = 0;
 
-
+console.log(1);
 box.onmessage = function(message) {
   let data = JSON.parse(message.data);
   console.log(data);
@@ -18,12 +19,13 @@ box.onmessage = function(message) {
   context.stroke();
   context.closePath();
 };
+console.log(2);
 
 box.onclose = function(){
     console.log('box closed');
     this.box = new WebSocket(box.url);
 };
-
+console.log(3)
 
 // event.offsetX, event.offsetY はキャンバスの縁からのオフセットの (x,y) です。
 
