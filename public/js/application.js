@@ -1,4 +1,4 @@
-const box = new ReconnectingWebSocket(location.protocol.replace("http", "ws") + "//" + location.host + "/ws", { timeoutInterval: 5000 });
+const box = new ReconnectingWebSocket(location.protocol.replace("http", "ws") + "//" + location.host + "/ws");
 const myPics = document.getElementById('myPics');
 const context = myPics.getContext('2d');
 
@@ -17,7 +17,7 @@ console.log(2);
 
 box.onclose = function () {
     console.log('box closed');
-    // this.box = new ReconnectingWebSocket(box.url);
+    this.box = new ReconnectingWebSocket(box.url);
 };
 console.log(3)
 
