@@ -1,4 +1,4 @@
-const box = new ReconnectingWebSocket(location.protocol.replace("http", "ws") + "//" + location.host + "/ws");
+const box = new ReconnectingWebSocket(location.protocol.replace("http", "ws") + "//" + location.host + "/ws", { timeoutInterval: 5000 });
 const myPics = document.getElementById('myPics');
 const context = myPics.getContext('2d');
 
@@ -17,7 +17,7 @@ console.log(2);
 
 box.onclose = function () {
     console.log('box closed');
-    this.box = new ReconnectingWebSocket(box.url);
+    // this.box = new ReconnectingWebSocket(box.url);
 };
 console.log(3)
 
@@ -36,13 +36,13 @@ myPics.addEventListener('mousemove', e => {
         radius = document.getElementById("radius").value;
         radius = Number(radius);
         drawLine(context, color, radius, [x, y, e.offsetX, e.offsetY]);
+        x = e.offsetX;
+        y = e.offsetY;
         box.send(JSON.stringify({
             color: color,
             radius: radius,
             line: [x, y, e.offsetX, e.offsetY]
         }));
-        x = e.offsetX;
-        y = e.offsetY;
     }
 });
 
