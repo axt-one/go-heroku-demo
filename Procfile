@@ -1,1 +1,1 @@
-web: oekaki-online
+web: go-heroku-demo
