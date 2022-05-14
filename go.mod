@@ -1,4 +1,4 @@
-module git.heroku.com/oekaki-online
+module github.com/axt-one/go-heroku-demo
 
 go 1.18
 
