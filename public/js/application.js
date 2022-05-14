@@ -31,18 +31,21 @@ myPics.addEventListener('mousemove', e => {
         color = document.getElementById("color_input").value;
         radius = document.getElementById("radius").value;
         radius = Number(radius);
-        drawLine(context, color, radius, [x, y, e.offsetX, e.offsetY]);
+        x_next = e.offsetX;
+        y_next = e.offsetY;
+        drawLine(context, color, radius, [x, y, x_next, y_next]);
         try {
             box.send(JSON.stringify({
                 color: color,
                 radius: radius,
-                line: [x, y, e.offsetX, e.offsetY]
+                line: [x, y, x_next, y_next]
             }));
-        } catch (e) {
-            console.log(e);
+            console.log([x, y, x_next, y_next])
+        } catch (err) {
+            console.log(err);
         }
-        x = e.offsetX;
-        y = e.offsetY;
+        x = x_next;
+        y = y_next;
     }
 });
 
