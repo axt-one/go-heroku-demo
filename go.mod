@@ -1,4 +1,4 @@
-module git.heroku.com/oekaki-online.git
+module git.heroku.com/oekaki-online
 
 go 1.18
 
