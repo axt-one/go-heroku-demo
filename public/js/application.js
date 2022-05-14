@@ -2,24 +2,20 @@ const box = new ReconnectingWebSocket(location.protocol.replace("http", "ws") + 
 const myPics = document.getElementById('myPics');
 const context = myPics.getContext('2d');
 
-console.log(0);
 let isDrawing = false;
 let x = 0;
 let y = 0;
 let color = "#000000"
 
-console.log(1);
 box.onmessage = function (message) {
     let data = JSON.parse(message.data);
     drawLine(context, data.color, data.radius, data.line);
 };
-console.log(2);
 
 box.onclose = function () {
     console.log('box closed');
     this.box = new ReconnectingWebSocket(box.url);
 };
-console.log(3)
 
 // event.offsetX, event.offsetY はキャンバスの縁からのオフセットの (x,y) です。
 
@@ -36,13 +32,17 @@ myPics.addEventListener('mousemove', e => {
         radius = document.getElementById("radius").value;
         radius = Number(radius);
         drawLine(context, color, radius, [x, y, e.offsetX, e.offsetY]);
+        try {
+            box.send(JSON.stringify({
+                color: color,
+                radius: radius,
+                line: [x, y, e.offsetX, e.offsetY]
+            }));
+        } catch (e) {
+            console.log(e);
+        }
         x = e.offsetX;
         y = e.offsetY;
-        box.send(JSON.stringify({
-            color: color,
-            radius: radius,
-            line: [x, y, e.offsetX, e.offsetY]
-        }));
     }
 });
 
