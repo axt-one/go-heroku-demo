@@ -40,7 +40,7 @@ myPics.addEventListener('mousemove', e => {
                 radius: radius,
                 line: [x, y, x_next, y_next]
             }));
-            console.log([x, y, x_next, y_next])
+            console.log([x, y, x_next, y_next]);
         } catch (err) {
             console.log(err);
         }
